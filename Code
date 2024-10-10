@@ -1,0 +1,61 @@
+const { createCanvas } = require('canvas');
+const fs = require('fs');
+
+// Khởi tạo canvas
+const width = 500;
+const height = 500;
+const canvas = createCanvas(width, height);
+const ctx = canvas.getContext('2d');
+
+// Màu nền
+ctx.fillStyle = '#ffffff';
+ctx.fillRect(0, 0, width, height);
+
+// Vẽ đầu ngựa (hình bầu dục)
+ctx.fillStyle = '#654321'; // Màu nâu
+ctx.beginPath();
+ctx.ellipse(250, 200, 80, 100, Math.PI / 8, 0, 2 * Math.PI);
+ctx.fill();
+
+// Vẽ tai ngựa
+ctx.beginPath();
+ctx.moveTo(190, 100);
+ctx.lineTo(180, 50);
+ctx.lineTo(220, 90);
+ctx.fill();
+
+ctx.beginPath();
+ctx.moveTo(310, 100);
+ctx.lineTo(320, 50);
+ctx.lineTo(280, 90);
+ctx.fill();
+
+// Vẽ mắt ngựa
+ctx.fillStyle = '#000000'; // Màu đen
+ctx.beginPath();
+ctx.arc(220, 180, 10, 0, 2 * Math.PI);
+ctx.fill();
+
+ctx.beginPath();
+ctx.arc(280, 180, 10, 0, 2 * Math.PI);
+ctx.fill();
+
+// Vẽ mũi ngựa
+ctx.fillStyle = '#654321';
+ctx.beginPath();
+ctx.arc(240, 250, 10, 0, 2 * Math.PI);
+ctx.fill();
+
+ctx.beginPath();
+ctx.arc(260, 250, 10, 0, 2 * Math.PI);
+ctx.fill();
+
+// Vẽ thân ngựa
+ctx.fillStyle = '#8b4513'; // Màu nâu sậm
+ctx.fillRect(150, 300, 200, 100);
+
+// Lưu ảnh thành file PNG
+const buffer = canvas.toBuffer('image/png');
+fs.writeFileSync('./horse_image.png', buffer);
+
+console.log('Hình ảnh con ngựa đã được vẽ và lưu thành file horse_image.png');
