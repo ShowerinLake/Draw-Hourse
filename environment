@@ -1,0 +1,3 @@
+Bạn cần cài đặt gói canvas để làm việc với đồ họa.
+
+npm install canvas
